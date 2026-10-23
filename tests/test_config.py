@@ -27,3 +27,8 @@ def test_invalid_environment_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("APP_ENV", "banana")
     with pytest.raises(ValidationError):
         Settings(_env_file=None)
+
+
+def test_cors_origins_default_empty(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("CORS_ORIGINS", raising=False)
+    assert Settings(_env_file=None).cors_origins == []
