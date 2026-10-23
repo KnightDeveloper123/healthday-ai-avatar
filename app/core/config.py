@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     app_env: Literal["development", "testing", "staging", "production"] = "development"
     log_level: str = "INFO"
+    cors_origins: list[str] = []
 
     @field_validator("log_level", mode="before")
     @classmethod
